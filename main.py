@@ -17,7 +17,8 @@ def main():
     print('fs is', _fs)
 
     while True:
-        time.sleep(10)
+        time.sleep(2)
+        GPIO.output(2, GPIO.LOW)
 
     #for i in range(4):
     #    on()
@@ -36,7 +37,8 @@ def initPins(_fs):
 def initFluidsynth():
     print('init fluidsynth')
     fs = fluidsynth.Synth()
-    fs.start('alsa')
+    fs.start('jack')
+    #fs.start('alsa')
     sfid = fs.sfload('/usr/share/sounds/sf2/FluidR3_GM.sf2')
     fs.program_select(0, sfid, 0, 0)
     print('fluidsynth initialized')
@@ -54,9 +56,9 @@ def off():
 
 
 def buttonCallback(pin, _fs):
-    #print('button pressed arg is', pinDict[pin])
+    #print('button pressed arg is', pinDict[pin]
     _fs.noteon(0, pinDict[pin], 50)
-
+    GPIO.output(2, GPIO.HIGH)
 
 
 def foo():
