@@ -1,0 +1,27 @@
+Installation guide of Fluidsynth using a Python script on Paspberry Pi
+
+Install Python3 and PiP3
+$ sudo apt-get install python3 pip3
+
+Install Python FluidSynth library
+$ sudo pip3 install pyFluidSynth
+
+Install audio driver
+$ sudo apt-get install alsa-utils
+$ sudo apt-get install mpg321
+$ sudo apt-get install lame
+$ sudo modprobe snd_bcm2835
+$ sudo amixer cset numid=3 1
+
+Test audio driver
+$ aplay output.wav
+
+Install Fluidsynth
+$ sudo apt-get fluidsynth
+
+Test FluidSynth
+$ fluidsynth -a alsa -m alsa_seq -l -i /usr/share/sounds/sf2/FluidR3_GM.sf2 MIDI_sample.mid
+
+Start FluidSynth
+$ fluidsynth -a alsa --gain 5 /usr/share/sounds/sf2/FluidR3_GM.sf2
+> noteon 0 60 50                       (chan key val)
