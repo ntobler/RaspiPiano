@@ -1,4 +1,4 @@
-Installation guide of Fluidsynth using a Python script on Paspberry Pi
+Installation guide of Fluidsynth using a Python script on Paspberry Pi 3A+
 
 Install Python3 and PiP3
 $ sudo apt-get install python3 pip3
@@ -6,12 +6,20 @@ $ sudo apt-get install python3 pip3
 Install Python FluidSynth library
 $ sudo pip3 install pyFluidSynth
 
-Install audio driver
+Install Sound Fonts (SF2)
+$ sudo apt-get install synaptic
+$ sudo synaptic
+search for fluid-soundfont-gm and install
+
+Install audio driver (was already present on new Rpi 3A+)
 $ sudo apt-get install alsa-utils
 $ sudo apt-get install mpg321
 $ sudo apt-get install lame
 $ sudo modprobe snd_bcm2835
 $ sudo amixer cset numid=3 1
+
+Set aduio jack as output
+$ amixer cset numid=3 1
 
 Test audio driver
 $ aplay output.wav
