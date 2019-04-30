@@ -1,4 +1,6 @@
+###############################################################################################
 Installation guide of Fluidsynth using a Python script on Paspberry Pi 3A+
+###############################################################################################
 
 Install Python3 and PiP3
 $ sudo apt-get install python3 pip3
@@ -27,9 +29,29 @@ $ aplay output.wav
 Install Fluidsynth
 $ sudo apt-get fluidsynth
 
-Test FluidSynth
+Test FluidSynth playing midi file
 $ fluidsynth -a alsa -m alsa_seq -l -i /usr/share/sounds/sf2/FluidR3_GM.sf2 MIDI_sample.mid
 
-Start FluidSynth
+Test FluidSynth Indi Midi interface
 $ fluidsynth -a alsa --gain 5 /usr/share/sounds/sf2/FluidR3_GM.sf2
 > noteon 0 60 50                       (chan key val)
+
+###############################################################################################
+Download RaspiPiano Application and run ist
+###############################################################################################
+
+Install GIT
+$ sudo apt-get install git
+
+Download repository
+$ cd /home/user/Documents
+$ git clone https://github.com/ntobler/RaspiPiano.git
+
+Start application
+$ cd /home/user/Documents/RaspiPiano
+$ python3 main.py &
+
+Stop application
+$ sudo pkill -x python3
+
+
